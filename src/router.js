@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Router from 'vue-router';
+import store from './store';
 import Home from './views/Home.vue';
 
 Vue.use(Router);
@@ -25,8 +26,14 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('Routing', to.path);
+  store.commit('isRouting');
   next();
+});
+
+router.afterEach(() => {
+  setTimeout(() => {
+    store.commit('isRouting');
+  }, 1500);
 });
 
 export default router;
