@@ -12,10 +12,13 @@
 <script>
 export default {
   computed: {
-    routing () {
-      return this.$store.state.routing ? 'Is routing' : 'Is NOT routing';
+    routing() {
+      return this.$store.state.routing ? this.doSomethingAwesome('Is routing') : this.doSomethingAwesome('Is NOT routing');
     }
   },
+  methods: {doSomethingAwesome(val){
+    alert(val);
+  }},
   name: "App",
   props: {
     msg: String
