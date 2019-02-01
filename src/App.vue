@@ -13,7 +13,7 @@
 export default {
   computed: {
     routing() {
-      return this.$store.state.routing ? this.doSomethingAwesome('Is routing') : this.doSomethingAwesome('Is NOT routing');
+      return this.$store.state.routing;
     }
   },
   methods: {doSomethingAwesome(val){
@@ -23,6 +23,11 @@ export default {
   props: {
     msg: String
   },
+  watch: {
+    routing(oldVal, newVal) {
+      this.doSomethingAwesome();
+    }
+  }
 };
 </script>
 
